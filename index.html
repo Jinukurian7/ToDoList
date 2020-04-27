@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            text-align: center;
+        }
+        #form {
+            display: flex;
+        }
+        input {
+            min-width: 500px;
+            border: 1px solid #333;
+            padding: 12px 12px;
+        }
+        button {
+            padding: 12px 12px;
+            background: green;
+            border: 1px solid green;
+            color: #ffffff;
+            flex: 1;
+        }
+        input:focus, button:focus {
+            outline: 0;
+        }
+        #list {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="container">
+            <h1>To Do list</h1>
+            <form action="" id="form">
+                <input id="toDo" type="text">
+                <button id="btn">Add</button>
+            </form>
+            <ul id="list"></ul>
+        </div>
+    </div>
+
+    <script>
+        var form = document.getElementById('form');
+        var input = document.getElementById('toDo');
+        var btn = document.getElementById('btn');
+        var list = document.getElementById('list');
+        btnClick = function(event) {
+            creatList();
+            return false
+            
+        }
+        creatList = function() {
+            var node = document.createElement('li');
+            var text = document.createTextNode(input.value)
+            // alert();
+            list.appendChild(node);
+            node.appendChild(text);
+        }
+        btn.addEventListener('click', function(e){
+            e.preventDefault();
+            if(input.value) {
+                btnClick();
+                form.reset();
+            }
+            else {
+                alert('enter something')
+            }
+        });
+        
+    </script>
+</body>
+</html>
